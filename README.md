@@ -1,1 +1,2 @@
-## Multi Authentication
+## M-Auth
+** Laravel Multiple Authentication System **
