@@ -1,2 +1,3 @@
-## M-Auth
-** Laravel Multiple Authentication System **
+## Laravel Multi Authentication
+
+**Version 1.0.0**
