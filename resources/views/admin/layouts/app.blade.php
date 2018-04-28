@@ -8,68 +8,102 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Get you Go') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="{{ asset('assets/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('assets/css/components.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('assets/css/colors.css') }}" rel="stylesheet" type="text/css">
+	<link href="{{ asset('css/theme.css') }}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    
+    <!-- Editional CSS -->
+    @stack('styles')
+    
+    <!-- Header Scripts -->
+    @stack('scripts-header')
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body @section('body-attrs') class="navbar-top" @show>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        
+        @section('navbar-main')
+            <!-- Main navbar -->
+            @include('admin.layouts.components.navbar-main')
+            <!-- /main navbar -->
+        @show
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+        <!-- Page container -->
+        <div class="page-container">
 
-                    </ul>
+            <!-- Page content -->
+            <div class="page-content">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                @section('sidebar-main')
+                    <!-- Main Sidebar -->
+                    @include('admin.layouts.components.sidebar-main')
+                    <!-- /main sidebar -->
+                @show
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                <!-- Secoundary Sidebar -->
+                @yield('sidebar-secoundary')
+                <!-- End Secoundary Sidebar -->
+                
+                <!-- Main content -->
+                <div class="content-wrapper">
+                    
+                    @section('flash-message')
+                        @include('flash::message')
+                    @show
+                    
+                    @yield('content')
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
                 </div>
-            </div>
-        </nav>
+                <!-- End Main content -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            </div>
+            <!-- /page content -->
+
+        </div>
+        <!-- /page container -->
+
     </div>
+
+    <!-- Modals -->
+    @yield('modals')
+
+    <!-- PHP Variables to Javascript Variables -->
+    @include ('footer')
+
+    <!-- Core JS files -->
+	<script type="text/javascript" src="{{ asset('assets/js/plugins/loaders/pace.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/core/libraries/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
+	<!-- /core JS files -->
+    
+    <!-- Flash Message Overlay -->
+    <script>
+        $('#flash-overlay-modal').modal();
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
+    <!-- End Flash Message Overlay -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ asset('assets/js/core/libraries/jquery_ui/core.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/plugins/notifications/sweet_alert.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/plugins/ui/nicescroll.min.js') }}"></script>
+    
+    @stack('scripts-plugin')
+
+	<script type="text/javascript" src="{{ asset('assets/js/core/app.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/pages/layout_fixed_custom.js') }}"></script>
+    
+    @stack('scripts')
+    <!-- /theme JS files -->
+    
 </body>
 </html>

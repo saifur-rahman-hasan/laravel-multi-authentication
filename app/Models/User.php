@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'username', 'email', 'password', 'role', 'active', 'profile_photo'
     ];
 
     /**
@@ -26,4 +26,33 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $appends = [
+        'name', 'active_status'
+    ];
+
+    public function getProfilePhotoAttribute()
+    {
+        return (!empty($this->profile_photo)) ? $this->profile_photo : asset('assets/images/placeholder.jpg');
+    }
+
+    public function getNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function getActiveStatusAttribute()
+    {
+        return (!empty($this->active) && !is_null($this->active) && $this->active === 1) ? "Yes" : "No";
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function hasRole($role_name)
+    {
+        return !! ($this->role === strtolower($role_name));
+    }
 }

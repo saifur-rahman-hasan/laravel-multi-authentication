@@ -43,5 +43,35 @@ Route::group([
     Route::get('/', 'HomeController@index')->name('admin');
     Route::get('home', 'HomeController@home')->name('admin.home');
 
+    Route::resource('users', 'AdminUserController')->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'show' => 'admin.users.show',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update',
+        'delete' => 'admin.users.delete'
+    ]);
+
+    Route::resource('categories', 'AdminCategoryController')->names([
+        'index' => 'admin.categories.index',
+        'create' => 'admin.categories.create',
+        'store' => 'admin.categories.store',
+        'show' => 'admin.categories.show',
+        'edit' => 'admin.categories.edit',
+        'update' => 'admin.categories.update',
+        'destroy' => 'admin.categories.destroy'
+    ]);
+
+    Route::resource('services', 'AdminServiceController')->names([
+        'index' => 'admin.services.index',
+        'create' => 'admin.services.create',
+        'store' => 'admin.services.store',
+        'show' => 'admin.services.show',
+        'edit' => 'admin.services.edit',
+        'update' => 'admin.services.update',
+        'delete' => 'admin.services.delete'
+    ]);
+
 });
 
