@@ -1,5 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/website/page-welcome.js": "/js/website/page-welcome.js"
+    "/js/website/home/welcome.js": "/js/website/home/welcome.js",
+    "/css/website/home/welcome.css": "/css/website/home/welcome.css"
 }

@@ -11,6 +11,13 @@ let mix = require('laravel-mix');
  |
  */
 
- mix.js('resources/assets/js/app.js', 'public/js')
-    .js('resources/assets/js/website/page-welcome.js', 'public/js/website')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+// mix.js('resources/assets/js/website/home/website.js', 'public/js/website/home')
+//     .sass('resources/assets/sass/app.scss', 'public/css');
+
+
+
+mix.js('resources/assets/js/website/home/welcome.js', 'public/js/website/home')
+    .sass('resources/assets/sass/website/home/welcome.scss', 'public/css/website/home')
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery']
+    });

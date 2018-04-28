@@ -1,52 +1,25 @@
 @extends('website.layouts.app')
 
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('css/website/home/welcome.css') }}" />
+@endpush
+
 @section('content')
     
     <!-- Section Intro -->
-    <div class="section-welcome">
-        <div class="jumbotron" style="background: url({{ asset('assets/images/backgrounds/seamless.png') }})">
-            <div class="container">
-                
-                <div class="row">
-
-                    <!-- Left Side -->
-                    <div class="col-sm-5">
-                        <br><br><br>
-
-                        <h1 class="text-thin text-success">Get you Go</h1>
-                        <p>A Right place to pick your service</p>
-                        <br>
-                        <p>
-                            <a class="btn btn-info btn-lg">Learn more</a>
-                            @guest
-                            <a href="{{ route('register') }}" class="btn btn-success btn-lg">Create an account</a>
-                            @endguest
-                        </p>
-                    </div>
-                    <!-- ./Left Side -->
-                    
-                    <!-- Right Side -->
-                    <div class="col-sm-7">
-                        <div class="owl-carousel owl-theme carousel-block">
-                
-                            <div class="item">
-                                <div class="thumbnail">
-                                    <img src="{{ asset('assets/images/backgrounds/seamless.png') }}" alt="Cover Image">
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <!-- Right Side -->
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+    @include('website.home.components.section-intro')
     <!-- /Section Intro -->
+
+    <!-- Section Popular Services -->
+    @include('website.home.components.section-popular-services')
+    <!-- /Section Popular Services -->
 
 @stop
 
 @push('scripts')
+
+    <script src="{{ asset('js/website/home/welcome.js') }}"></script>
+
 @endpush

@@ -99,7 +99,7 @@
     
     @stack('scripts-plugin')
 
-	<script type="text/javascript" src="{{ asset('assets/js/core/app.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('vue.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/pages/layout_fixed_custom.js') }}"></script>
     
     @stack('scripts')

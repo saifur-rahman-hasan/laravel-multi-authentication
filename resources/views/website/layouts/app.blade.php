@@ -22,6 +22,7 @@
     
     <!-- Editional CSS -->
     @stack('styles')
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
     <!-- Header Scripts -->
@@ -29,6 +30,8 @@
 
 </head>
 <body @section('body-attrs') class="navbar-top" @show>
+
+    <!-- App Start -->
     <div id="app">
         
         @section('navbar-main')
@@ -93,8 +96,6 @@
 	<script type="text/javascript" src="{{ asset('assets/js/plugins/ui/nicescroll.min.js') }}"></script>
     
     @stack('scripts-plugin')
-
-	<script type="text/javascript" src="{{ asset('assets/js/core/app.js') }}"></script>
     
     @stack('scripts')
     <!-- /theme JS files -->
