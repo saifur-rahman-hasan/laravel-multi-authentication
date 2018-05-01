@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 150)->unique();
             $table->string('password');
             $table->boolean('active');
-            $table->enum('role', [ 'customer' ])->default('customer');
+            $table->enum('role', [ 'customer', 'service-provider' ])->default('customer');
             $table->text('profile_photo')->nullable();
             $table->rememberToken();
             $table->timestamps();

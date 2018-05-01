@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Website;
 
+use JavaScript;
 use Illuminate\Http\Request;
 use App\Models\Admin\AdminCategory;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', [ 'except' => [ 'index' ]  ]);
+        $this->middleware('auth', [ 'except' => [ 'index' ] ]);
     }
 
     /**
@@ -25,10 +27,15 @@ class HomeController extends Controller
     public function index()
     {
         $categories = AdminCategory::all();
+        $categories->load('services');
 
         $compact = compact('categories');
 
-        return view('website.home.welcome', $compact);
+        JavaScript::put([
+            'categories' => $categories
+        ]);
+
+        return view('website.home.welcome');
     }
 
     /**
@@ -38,6 +45,14 @@ class HomeController extends Controller
      */
     public function home()
     {
+        $categories = AdminCategory::all();
+        $categories->load('services');
+
+        $compact = compact('categories');
+        JavaScript::put([
+            'categories' => $categories
+        ]);
+
         return view('website.home.index');
     }
 }

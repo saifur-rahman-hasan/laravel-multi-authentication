@@ -22,7 +22,22 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">    
-                
+
+                @if(auth()->user()->hasRole('customer'))
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('explore.categories.index') }}">Categories</a></li>
+                    <li><a href="{{ route('explore.services.index') }}">Explore Services</a></li>
+                    <li><a href="#">My Account</a></li>
+                @endif
+
+                @if(auth()->user()->hasRole('service-provider'))
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('explore.categories.index') }}">Categories</a></li>
+                    <li><a href="{{ route('explore.services.index') }}">Explore Services</a></li>
+                    <li><a href="#">Task Center</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                @endif
+
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ asset('assets/images/placeholder.jpg') }}" alt="">
@@ -39,11 +54,11 @@
                         
                         <!-- Admin Logout Link -->
                         <li>
-                            <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="icon-switch2"></i> {{ __('Logout') }}
                             </a>
                                 
-                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </li>
@@ -55,10 +70,10 @@
                 
             @guest
             <ul class="nav navbar-nav navbar-right">    
-                <li><a href="{{ route('login') }}">{{ __('Explore Services') }}</a></li>
-                <li><a href="{{ route('login') }}">{{ __('Task Center') }}</a></li>
-                <li><a href="{{ route('login') }}">{{ __('Join as Service Provider') }}</a></li>
-                <li><a href="{{ route('login') }}">{{ __('Join as Customer') }}</a></li>
+                <li><a href="{{ route('explore.services.index') }}">{{ __('Explore Services') }}</a></li>
+                <li><a href="{{ route('explore.tasks.index') }}">{{ __('Task Center') }}</a></li>
+                <li><a href="{{ route('register', ['userType' => 'serviceProvider']) }}">{{ __('Join as Service Provider') }}</a></li>
+                <li><a href="{{ route('register') }}">{{ __('Join as Customer') }}</a></li>
                 <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
 
                 <!-- Language Switch -->

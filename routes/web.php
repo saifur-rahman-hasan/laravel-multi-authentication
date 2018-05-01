@@ -11,10 +11,32 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/', 'Website\HomeController@index');
 
 Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| Website Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register admin routes for your application.
+|
+*/
+Route::group([
+    'namespace' => 'Website',
+], function(){
+
+    Route::get('home', 'HomeController@home')->name('home');
+    Route::get('explore/categories', 'WebsiteCategoryController@index')->name('explore.categories.index');
+    Route::get('explore/categories/{id}/show', 'WebsiteCategoryController@show')->name('explore.categories.show');
+    Route::get('explore/categories/{id}/services', 'WebsiteCategoryController@showServices')->name('explore.categories.services');
+    Route::get('explore/services', 'WebsiteServiceController@index')->name('explore.services.index');
+    Route::get('explore/services/{id}/show', 'WebsiteServiceController@show')->name('explore.services.show');
+    Route::get('explore/tasks', 'WebsiteTaskController@index')->name('explore.tasks.index');
+    Route::get('explore/tasks/{id}/show', 'WebsiteTaskController@show')->name('explore.tasks.show');
+
+});
 
 /*
 |--------------------------------------------------------------------------

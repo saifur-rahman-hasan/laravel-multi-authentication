@@ -7,7 +7,10 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo_icon_dark.png') }}" type="image/x-icon">
+    
     <title>{{ config('app.name', 'Get you Go') }}</title>
 
     <!-- Global stylesheets -->
@@ -26,6 +29,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
     <!-- Header Scripts -->
+    <script type="text/javascript">
+        window.base_url = '<?=url("/")?>';
+    </script>
     @stack('scripts-header')
 
 </head>

@@ -39,6 +39,9 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        if(request()->has('userType') && request('userType') == 'serviceProvider'){
+            return view('website.auth.login-serviceProvider');
+        }
         return view('website.auth.login');
     }
 }

@@ -16,9 +16,21 @@ class AdminService extends Model
         'category_id'
     ];
 
+    protected $appends = [
+        'image_url'
+    ];
+
     public function getImage()
     {
         return (!empty($this->image)) ? asset('storage/images/services/'.$this->image) : asset('assets/images/backgrounds/seamless.png');
+    }
+
+    /* Return Full path of the Service Image
+     * @return String;
+     * */
+    public function getImageUrlAttribute()
+    {
+        return $this->getImage();
     }
 
     // Category Model

@@ -7,14 +7,32 @@
 @endpush
 
 @section('content')
-    
+
     <!-- Section Intro -->
-    @include('website.home.components.section-intro')
-    <!-- /Section Intro -->
+    @verbatim
+    <section-intro></section-intro>
+    @endverbatim
+    <!-- ./Section Intro -->
 
     <!-- Section Popular Services -->
-    @include('website.home.components.section-popular-services')
-    <!-- /Section Popular Services -->
+    @verbatim
+        <section-popular-service></section-popular-service>
+    @endverbatim
+    <!-- ./Section Popular Services -->
+
+    <!-- Section Popular Service Providers -->
+    @verbatim
+        <section-popular-service-providers></section-popular-service-providers>
+    @endverbatim
+    <!-- ./Section Popular Service Providers -->
+
+    <!-- Section What we Provide -->
+    @include('website.home.components.section-what-we-provide')
+    <!-- ./Section What we Provide -->
+
+    <!-- Section Footer -->
+    @include('website.layouts.components.footer')
+    <!-- ./Section Footer -->
 
 @stop
 

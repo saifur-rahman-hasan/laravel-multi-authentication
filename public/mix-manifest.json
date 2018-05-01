@@ -1,4 +1,7 @@
 {
     "/js/website/home/welcome.js": "/js/website/home/welcome.js",
-    "/css/website/home/welcome.css": "/css/website/home/welcome.css"
+    "/js/website/home/index.js": "/js/website/home/index.js",
+    "/js/website/categories/index.js": "/js/website/categories/index.js",
+    "/js/website/auth/login.js": "/js/website/auth/login.js",
+    "/js/website/categories/show.js": "/js/website/categories/show.js"
 }

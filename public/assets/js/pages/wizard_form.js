@@ -129,7 +129,7 @@ $(function() {
         formOptions :{
             success: function(data){
                 console.log(data);
-                swal({title: "Congratulations!", text: `${data.message}`, type: "success", timer: 2000, confirmButtonColor: "#43ABDB"})
+                swal({title: "Congratulations!", text: `${data.message}`, type: "success", timer: 2000, confirmButtonColor: "#43ABDB"});
             },
             beforeSubmit: function(data){
                 $("#ajax-data").css({borderTop: '1px solid #ddd', padding: 15}).html("<span class='text-semibold'>Data sent to the server:</span> " + $.param(data));

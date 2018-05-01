@@ -7,65 +7,18 @@
 
 window.Vue = require('vue');
 
-import 'owl.carousel';
+// Imported Components
+import SectionIntro from './components/SectionIntro'
+import SectionPopularService from './components/SectionPopularService'
+import SectionPopularServiceProviders from './components/SectionPopularServiceProviders'
 
-// Application for Section Intro
-var sectionIntroCarousel = new Vue({
+Vue.component('section-intro', SectionIntro);
+Vue.component('section-popular-service', SectionPopularService);
+Vue.component('section-popular-service-providers', SectionPopularServiceProviders);
 
-    el: '#sectionIntroCarousel',
+var app = new Vue({
 
-    data: {
-
-        appName: 'Get you Go',
-
-        activatedCarouselItem: 0,
-
-        carouselItems: [
-            {
-                image: 'https://staticfiles.hellotoby.com/hellotoby-icon/landing-page/landing-banner-trainer-m.jpg',
-                title: 'Looking for any service today?',
-                subTitle: 'Let Get you Go help you with over 600 services.',
-                buttonText: 'Get started now',
-                buttonUrl: '#'
-            },
-
-            {
-                image: 'https://staticfiles.hellotoby.com/hellotoby-icon/landing-page/landing-banner-photographer-m.jpg',
-                title: 'Get the best pro for yourself',
-                subTitle: 'Brows through thousands of service Pro\'s profile',
-                buttonText: 'Explore now',
-                buttonUrl: '#'
-            }
-        ]
-    },
-
-    mounted: function (){
-        var carouselBlock = $('.carousel-block');
-
-        carouselBlock.owlCarousel({
-            autoplay: true,
-            loop:true,
-            margin:10,
-            dots: true,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                },
-                600:{
-                    items:1,
-                },
-                1000:{
-                    items:1,
-                    loop:false
-                },
-                1800:{
-                    items:1,
-                    loop:true
-                }
-            }
-        });
-
-    }
+    el: '#app',
+    data: {}
 
 });
