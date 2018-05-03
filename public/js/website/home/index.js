@@ -15463,6 +15463,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var PopularServicesData = window.categories;
@@ -15484,7 +15498,6 @@ var PopularServicesData = window.categories;
     methods: {
         loadServicesByCategoryId: function loadServicesByCategoryId(index) {
             this.servicesByCategory = this.categories[index].services;
-            console.log(this.categories[index]);
         }
     },
 
@@ -15561,28 +15574,48 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-sm-3" }, [
-                  _c(
-                    "ul",
-                    { staticClass: "list-group" },
-                    _vm._l(_vm.categories, function(category, index) {
-                      return _c("li", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "list-group-item",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                _vm.loadServicesByCategoryId(index)
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(category.name))]
-                        )
+                  _c("div", { staticClass: "sidebar-detached" }, [
+                    _c("div", { staticClass: "sidebar sidebar-default" }, [
+                      _c("div", { staticClass: "sidebar-content" }, [
+                        _c("div", { staticClass: "sidebar-category" }, [
+                          _c(
+                            "div",
+                            { staticClass: "category-content no-padding" },
+                            [
+                              _c(
+                                "ul",
+                                {
+                                  staticClass:
+                                    "navigation navigation-alt navigation-accordion"
+                                },
+                                _vm._l(_vm.categories, function(
+                                  category,
+                                  index
+                                ) {
+                                  return _c("li", [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "list-group-item",
+                                        attrs: { href: "#" },
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            _vm.loadServicesByCategoryId(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(category.name))]
+                                    )
+                                  ])
+                                })
+                              )
+                            ]
+                          )
+                        ])
                       ])
-                    })
-                  )
+                    ])
+                  ])
                 ])
               ])
             : _c(

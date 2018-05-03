@@ -62,11 +62,25 @@
                     <!-- Right Column [ Service Categories ] -->
                     <div class="col-sm-3">
 
-                        <ul class="list-group">
-                            <li v-for="(category, index) in categories">
-                                <a href="#" @click.prevent="loadServicesByCategoryId(index)" class="list-group-item">{{ category.name }}</a>
-                            </li>
-                        </ul>
+                        <div class="sidebar-detached">
+                            <div class="sidebar sidebar-default">
+                                <div class="sidebar-content">
+
+                                    <!-- Sub navigation -->
+                                    <div class="sidebar-category">
+                                        <div class="category-content no-padding">
+                                            <ul class="navigation navigation-alt navigation-accordion">
+                                                <li v-for="(category, index) in categories">
+                                                    <a href="#" @click.prevent="loadServicesByCategoryId(index)" class="list-group-item">{{ category.name }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /sub navigation -->
+
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <!-- /Right Column [ Service Categories ] -->
@@ -101,7 +115,6 @@
         methods: {
             loadServicesByCategoryId(index){
                 this.servicesByCategory = this.categories[index].services;
-                console.log(this.categories[index]);
             }
         },
 

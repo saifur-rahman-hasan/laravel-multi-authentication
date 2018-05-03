@@ -27,8 +27,8 @@
                                     <div class="category-content no-padding">
                                         <ul class="navigation navigation-alt navigation-accordion">
                                             <li class="navigation-header">Categories</li>
-                                            @foreach($categories as $category)
-                                                <li><a href="{{ route('explore.categories.services', $category->id) }}">{{ $category->name }}</a></li>
+                                            @foreach($categories as $categoryList)
+                                                <li><a href="{{ route('explore.categories.services', $categoryList->id) }}">{{ $categoryList->name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -43,32 +43,30 @@
 
                 <!-- Right Column [ Services List ] -->
                 <div class="col-sm-9">
+                    @if(!empty($category) && count($category->services()->get()) )
 
-                    @foreach($category->services()->get()->chunk(4) as $services_rows)
-                        <div class="row">
-
-                            @foreach($services_rows as $service)
-                                <div class="col-sm-4">
-                                    <div class="thumbnail">
-                                        <div class="thumb">
-                                            <img src="{{ $service->image_url }}" alt="">
-                                            <div class="caption-overflow">
-                                                <span>
-                                                    <a href="{{ route('explore.services.show', $service->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                                </span>
+                        @foreach( $category->services()->get()->chunk(3) as $services)
+                            <div class="row">
+                                @foreach($services as $service)
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="thumbnail">
+                                            <img src="{{ $service->getImage() }}" alt="">
+                                            <div class="caption">
+                                                <h3>
+                                                    <a href="{{ route('explore.services.show', $service->id) }}">{{ $service->name }}</a>
+                                                </h3>
                                             </div>
                                         </div>
-
-                                        <div class="caption">
-                                            <h6 class="text-semibold no-margin-top no-margin-bottom">{{ $service->name }}</h6>
-                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
+                        @endforeach
 
+                    @else
+                        <div class="alert alert-important alert-warning">
+                            <strong>Notice:</strong> Sorry there is no available service found to show.
                         </div>
-                    @endforeach
-
+                    @endif
                 </div>
                 <!-- ./Right Column [ Services List ] -->
 
