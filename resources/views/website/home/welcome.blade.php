@@ -26,13 +26,17 @@
     @endverbatim
     <!-- ./Section Popular Service Providers -->
 
+    <!-- Section How to connect with service pros -->
+    @include('website.home.components.how-to-connect-with-service-pros')
+    <!-- ./Section How to connect with service pros -->
+
+    <!-- Section Download Mobile App -->
+    @include('website.home.components.section-download-mobile-app')
+    <!-- ./Section Download Mobile App -->
+
     <!-- Section What we Provide -->
     @include('website.home.components.section-what-we-provide')
     <!-- ./Section What we Provide -->
-
-    <!-- Section Footer -->
-    @include('website.layouts.components.footer')
-    <!-- ./Section Footer -->
 
 @stop
 

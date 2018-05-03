@@ -65,6 +65,12 @@
                     
                     @yield('content')
 
+                    <!-- Section Footer -->
+                    @section('footer')
+                        @include('website.layouts.components.footer')
+                    @show
+                    <!-- ./Section Footer -->
+
                 </div>
                 <!-- End Main content -->
 
